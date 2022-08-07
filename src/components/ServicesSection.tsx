@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { About, Description, Image } from "./Styles";
+import { About, Description, Image } from "../styles";
 
 export default function ServicesSection() {
   return (

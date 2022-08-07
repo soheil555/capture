@@ -1,4 +1,4 @@
-import { About, Description, Hide, Image } from "./Styles";
+import { About, Description, Hide, Image } from "../styles";
 
 export default function AboutSection() {
   return (

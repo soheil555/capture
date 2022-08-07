@@ -1,4 +1,4 @@
-import { About } from "./Styles";
+import { About } from "../styles";
 import styled from "styled-components";
 
 export default function FaqSection() {
