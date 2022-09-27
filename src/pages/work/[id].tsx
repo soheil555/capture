@@ -1,6 +1,8 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { movieState, Movie } from "../../movieState";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animations";
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
@@ -23,7 +25,12 @@ interface MovieDetailProps {
 
 const MovieDetail = ({ movie }: MovieDetailProps) => {
   return (
-    <Details>
+    <Details
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <HeadLine>
         <h2>{movie.title}</h2>
         <img src={movie.mainImg} alt={movie.title} />
@@ -46,7 +53,7 @@ const MovieDetail = ({ movie }: MovieDetailProps) => {
   );
 };
 
-const Details = styled.div`
+const Details = styled(motion.div)`
   color: white;
 `;
 
