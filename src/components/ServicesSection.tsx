@@ -1,9 +1,18 @@
 import styled from "styled-components";
+import useScroll from "../hooks/useScroll";
 import { About, Description, Image } from "../styles";
+import { fadeAnimation } from "../animations";
 
 export default function ServicesSection() {
+  const { element, controls } = useScroll();
+
   return (
-    <Services>
+    <Services
+      variants={fadeAnimation}
+      ref={element}
+      animate={controls}
+      initial="hidden"
+    >
       <Description>
         <h2>
           High <span>quiality</span> services

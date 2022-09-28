@@ -1,60 +1,57 @@
 import { About } from "../styles";
 import styled from "styled-components";
+import Collapse from "./Collapse";
+import { AnimateSharedLayout } from "framer-motion";
+import { fadeAnimation } from "../animations";
+import useScroll from "../hooks/useScroll";
 
 export default function FaqSection() {
+  const { element, controls } = useScroll();
+
   return (
-    <Faq>
+    <Faq
+      variants={fadeAnimation}
+      ref={element}
+      animate={controls}
+      initial="hidden"
+    >
       <h2>
         Any Questions <span>FAQ</span>
       </h2>
 
-      <div className="question">
-        <h4>How Do I Start?</h4>
-        <div className="answer">
+      <AnimateSharedLayout>
+        <Collapse title="How Do I Start?">
           <p>Lorem ipsum dolor sit amet.</p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             quod.
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
+        </Collapse>
 
-      <div className="question">
-        <h4>Daily Scehdule</h4>
-        <div className="answer">
+        <Collapse title="Daily Scehdule">
           <p>Lorem ipsum dolor sit amet.</p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             quod.
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
+        </Collapse>
 
-      <div className="question">
-        <h4>Different Payment Methods</h4>
-        <div className="answer">
+        <Collapse title="Different Payment Methods">
           <p>Lorem ipsum dolor sit amet.</p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             quod.
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
+        </Collapse>
 
-      <div className="question">
-        <h4>What Products Do You Offer?</h4>
-        <div className="answer">
+        <Collapse title="What Products Do You Offer?">
           <p>Lorem ipsum dolor sit amet.</p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             quod.
           </p>
-        </div>
-        <div className="faq-line"></div>
-      </div>
+        </Collapse>
+      </AnimateSharedLayout>
     </Faq>
   );
 }

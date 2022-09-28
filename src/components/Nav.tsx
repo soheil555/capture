@@ -26,6 +26,8 @@ export default function Nav() {
 }
 
 const StyledNav = styled.nav`
+  position: relative;
+  z-index: 20;
   min-height: 10vh;
   display: flex;
   margin: auto;
