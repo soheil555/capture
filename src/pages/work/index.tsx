@@ -10,8 +10,12 @@ import {
   slideAnimation,
 } from "../../animations";
 import { Hide } from "../../styles";
+import useScroll from "../../hooks/useScroll";
 
 const OurWork: NextPage = () => {
+  const { element: element1, controls: controls1 } = useScroll();
+  const { element: element2, controls: controls2 } = useScroll();
+
   return (
     <Work variants={pageAnimation} initial="hidden" animate="show" exit="exit">
       <Frame1 variants={slideAnimation} />
@@ -33,21 +37,41 @@ const OurWork: NextPage = () => {
         </Link>
       </Movie>
 
-      <Movie>
+      <Movie
+        variants={fadeAnimation}
+        ref={element1}
+        animate={controls1}
+        initial="hidden"
+      >
         <h2>The Racer</h2>
-        <div className="line"></div>
+        <motion.div variants={lineAnimation} className="line"></motion.div>
         <Link href="/work/the-racer">
           <Hide>
-            <img src="/images/theracer-small.png" alt="theracer" />
+            <motion.img
+              variants={photoAnimation}
+              src="/images/theracer-small.png"
+              alt="theracer"
+            />
           </Hide>
         </Link>
       </Movie>
 
-      <Movie>
+      <Movie
+        variants={fadeAnimation}
+        ref={element2}
+        animate={controls2}
+        initial="hidden"
+      >
         <h2>Good Times</h2>
-        <div className="line"></div>
+        <motion.div variants={lineAnimation} className="line"></motion.div>
         <Link href="/work/good-times">
-          <img src="/images/goodtimes-small.png" alt="goodtimes" />
+          <Hide>
+            <motion.img
+              variants={photoAnimation}
+              src="/images/goodtimes-small.png"
+              alt="goodtimes"
+            />
+          </Hide>
         </Link>
       </Movie>
     </Work>
@@ -87,7 +111,7 @@ const Work = styled(motion.div)`
   }
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
   padding-bottom: 10rem;
 
   .line {

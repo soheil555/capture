@@ -54,6 +54,9 @@ export const photoAnimation: Variants = {
   hidden: {
     opacity: 0,
     scale: 1.5,
+    transition: {
+      duration: 0.5,
+    },
   },
   show: {
     opacity: 1,

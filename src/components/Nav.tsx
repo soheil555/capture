@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function Nav() {
+  const { pathname } = useRouter();
+
   return (
     <StyledNav>
       <h1>
@@ -12,13 +16,34 @@ export default function Nav() {
 
       <ul>
         <li>
-          <Link href="/">1. About Us</Link>
+          <Link href="/" scroll={false}>
+            1. About Us
+          </Link>
+          <Line
+            initial={{ width: "0rem" }}
+            animate={{ width: pathname === "/" ? "6rem" : "0rem" }}
+            transition={{ duration: 1 }}
+          />
         </li>
         <li>
-          <Link href="/work">2. Our Work</Link>
+          <Link href="/work" scroll={false}>
+            2. Our Work
+          </Link>
+          <Line
+            initial={{ width: "0rem" }}
+            animate={{ width: pathname === "/work" ? "6rem" : "0rem" }}
+            transition={{ duration: 1 }}
+          />
         </li>
         <li>
-          <Link href="/contact-us">3. Contact Us</Link>
+          <Link href="/contact-us" scroll={false}>
+            3. Contact Us
+          </Link>
+          <Line
+            initial={{ width: "0rem" }}
+            animate={{ width: pathname === "/contact-us" ? "6rem" : "0rem" }}
+            transition={{ duration: 1 }}
+          />
         </li>
       </ul>
     </StyledNav>
@@ -26,7 +51,8 @@ export default function Nav() {
 }
 
 const StyledNav = styled.nav`
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 20;
   min-height: 10vh;
   display: flex;
@@ -55,4 +81,13 @@ const StyledNav = styled.nav`
     padding-left: 10rem;
     position: relative;
   }
+`;
+
+const Line = styled(motion.div)`
+  position: absolute;
+  bottom: -40%;
+  left: 65%;
+  width: 0rem;
+  height: 0.25rem;
+  background: #23d997;
 `;
